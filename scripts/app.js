@@ -313,7 +313,7 @@
   };
   // TODO uncomment line below to test app with fake data
   // app.updateForecastCard(initialWeatherForecast);
-
+  
   // TODO add startup code here
   app.selectedCities = localStorage.selectedCities;
   if (app.selectedCities) {
@@ -330,4 +330,11 @@
   }
 
   // TODO add service worker code here
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+             .register('./service-worker.js')
+             .then(function(ragistration) {
+               console.log('serviceWorker registed: ', ragistration.scope);
+             });
+  }
 })();
